@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no"/>
+  <title>Document</title>
+  <style>
+@keyframes warn {
+	0% {
+    transform-origin: center;
+		transform: scale(0.2);
+		opacity: 0.2;
+	}
+	50% {
+    transform-origin: center;
+		transform: scale(1);
+		opacity: 0.65;
+	}
+	100% {
+    transform-origin: center;
+		transform: scale(0.2);
+		opacity: 0.2;
+	}
+}
+
+@-webkit-keyframes warn {
+	0% {
+    -webkit-transform-origin: center;
+		-webkit-transform: scale(0.2);
+		opacity: 0.2;
+	}
+	50% {
+    -webkit-transform-origin: center;
+		-webkit-transform: scale(1);
+		opacity: 0.65;
+	}
+	100% {
+    -webkit-transform-origin: center;
+		-webkit-transform: scale(0.2);
+		opacity: 0.2;
+	}
+}
+.marker {
+  background: red;
+	border-radius: 50%;
+	z-index: 1;
+	opacity: 0;
+	animation: warn 3s ease-out;
+	animation-iteration-count: infinite;
+}
+.amap-subway-api #select_bg {
+  fill: #102b6a !important;
+  fill-opacity: 1 !important;
+}
+.marker .img-c {
+  display: none;
+}
+.amap-subway-api #subway-svg text {
+  fill: #fff;
+}
+.info {
+  display: flex;
+  width: 470px;
+  padding: 10px;
+  background: url('./big-bg.jpeg') no-repeat left top / cover;
+  /* transform-origin: left top;
+  transform: scale(0.5); */
+  border-radius: 6px;
+  color: #fff;
+}
+.subway-tip {
+  transform-origin: left top !important;
+  transform: scale(0.5) !important;
+}
+.info .total {
+  line-height: 24px;
+  background: url('./number-bg.png') no-repeat 0 130px / 100% 30px;
+  margin-right: 10px;
+  padding: 60px 40px 0 34px;
+  text-align: center;
+  font-size: 12px;
+}
+.info .total .totalNum {
+  margin-top: 6px;
+  font-weight: bold;
+  font-size: 26px;
+}
+.info .table {
+  width: 370px;
+  height: 202px;
+  margin: 20px 20px 40px 0;
+  padding: 4px 4px 4px 0;
+  font-size: 12px;
+  background: url('./small-bg.png') no-repeat left top / 100% 100%;
+}
+.table .tableHeader {
+  display: flex;
+  width: 100%;
+  line-height: 40px;
+  background: rgba(4, 2, 56, 0.55);
+}
+.table .tableList {
+  display: flex;
+  width: 100%;
+  line-height: 30px;
+}
+.tableHeader p:first-child, .tableList p:first-child {
+  width: 20%;
+  text-align: center;
+}
+.tableHeader p:nth-child(2), .tableList p:nth-child(2) {
+  width: 40%;
+  text-align: center;
+}
+.tableHeader p:last-child, .tableList p:last-child {
+  width: 40%;
+  text-align: center;
+}
+  </style>
+  <!-- <script src="https://webapi.amap.com/subway?v=1.0&key=d510afe0d12dbaed585a518e5bebf4b5&callback=cbk"></script> -->
+  <script src="./subway.js"></script>
+</head>
+<body>
+  <div id="mysubway"></div>
+  <script>
+    window.onload = function () {
+      var mysubway = subway("mysubway",{
+          adcode: "1100"
+      });
+      mysubway.event.on('subway.complete', function() {
+        var list = ['110100023076', '900000028907', '900000062236', '900000099933']
+        mysubway.showLine(list);
+        mysubway.scale(0.1);
+        mysubway.addMarker('动物园', {
+          customClass: 'marker marker-动物园',
+          width: '30px',
+          height: '30px',
+          offset: {
+            x: 0,
+            y: 30,
+          },
+        })
+        mysubway.addMarker('新宫', {
+          customClass: 'marker marker-新宫',
+          width: '50px',
+          height: '50px',
+          offset: {
+            x: 0,
+            y: 50,
+          },
+        })
+        mysubway.event.on('subway.touch ',function(){	 	
+          mysubway.clearInfoWindow();
+        })
+        Array.from(document.querySelectorAll('.marker')).map(item => {
+          item.addEventListener('click', (e) => {
+            const name = e.target.className.split(' ')[3].split('-')[1];
+            mysubway.clearInfoWindow();
+            mysubway.addInfoWindow(name, {
+              content: `<div class="info">
+                          <div class="total">
+                            <p>本站故障数:</p>
+                            <p class="totalNum">1,000</p>
+                          </div>
+                          <div class="table">
+                            <div class="tableHeader">
+                              <p>序号</p>
+                              <p>现象分类</p>
+                              <p>设备</p>
+                            </div>
+                            <div class="tableList">
+                              <p>1</p>
+                              <p>ATO过标</p>
+                              <p>列车自动运行设备</p>
+                            </div>
+                            <div class="tableList">
+                              <p>2</p>
+                              <p>CM不可用</p>
+                              <p>列车自动运行设备</p>
+                            </div>
+                            <div class="tableList">
+                              <p>3</p>
+                              <p>VOBC宕机</p>
+                              <p>列车自动运行设备</p>
+                            </div>
+                            <div class="tableList">
+                              <p>4</p>
+                              <p>车地通信中断</p>
+                              <p>列车自动运行设备</p>
+                            </div>
+                            <div class="tableList">
+                              <p>5</p>
+                              <p>车载屏显示异常</p>
+                              <p>列车自动运行设备</p>
+                            </div>
+                          </div>
+                        </div>`
+            });
+          })
+        })
+      })
+      // "4号线大兴线" "110100023076"
+      // 14号线 "900000028907"
+      // 16号线 "900000062236"
+      // 17号线 "900000099933"
+    }
+  </script>
+</body>
+</html>
