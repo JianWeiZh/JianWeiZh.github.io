@@ -128,10 +128,10 @@
       var mysubway = subway("mysubway",{
           adcode: "1100"
       });
-      mysubway.event.on('subway.complete', function() {
-        var list = ['110100023076', '900000028907', '900000062236', '900000099933']
-        mysubway.showLine(list);
-        mysubway.scale(0.1);
+      var scale = 0.3;
+      function setMarker () {
+        mysubway.clearMarker('动物园');
+        mysubway.clearMarker('新宫');
         mysubway.addMarker('动物园', {
           customClass: 'marker marker-动物园',
           width: '30px',
@@ -150,6 +150,12 @@
             y: 50,
           },
         })
+      }
+      mysubway.event.on('subway.complete', function() {
+        var list = ['110100023076', '900000028907', '900000062236', '900000099933']
+        mysubway.showLine(list);
+        mysubway.scale(scale);
+        setMarker();
         mysubway.event.on('subway.touch ',function(){	 	
           mysubway.clearInfoWindow();
         })
@@ -200,6 +206,37 @@
           })
         })
       })
+      var time = new Date().getTime();
+      windowAddMouseWheel();
+        function windowAddMouseWheel() {
+            var scrollFunc = function (e) {
+                e = e || window.event;
+            if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+              if (e.wheelDelta > 0 && scale < 1.29) { //当滑轮向上滚动时
+                scale += 0.001
+              }
+              if (e.wheelDelta < 0 && scale > 0.33) { //当滑轮向下滚动时
+                scale -= 0.001
+              }
+            } else if (e.detail) {  //Firefox滑轮事件
+              if (e.detail> 0 && scale < 1.29) { //当滑轮向上滚动时
+                scale += 0.001
+              }
+              if (e.detail< 0 && scale > 0.33) { //当滑轮向下滚动时
+                scale -= 0.001
+              }
+            }
+            if (new Date().getTime() - time >= 500) {
+              mysubway.scale(scale);
+            }
+        };
+                  //给页面绑定滑轮滚动事件
+        if (document.addEventListener) { //火狐使用DOMMouseScroll绑定
+          document.addEventListener('DOMMouseScroll', scrollFunc, false);
+        }
+                //其他浏览器直接绑定滚动事件
+        window.onmousewheel = document.onmousewheel = scrollFunc;
+	    }
       // "4号线大兴线" "110100023076"
       // 14号线 "900000028907"
       // 16号线 "900000062236"
