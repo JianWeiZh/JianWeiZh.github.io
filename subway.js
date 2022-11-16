@@ -4053,13 +4053,13 @@
           var s = document.getElementById(t)
             , o = a.offset(s).left
             , c = a.offset(s).top
-            , l = h(e.elem, ".overlays")
+            , l = h(e.elem, '.overlays')
             , u = parseInt(a.css(l, "left")) || 0
             , p = parseInt(a.css(l, "top")) || 0
             , d = o + n * r / 2 - u + i.opts.offset.x * r
             , f = c + n * r / 2 - p + i.opts.offset.y * r;
           a.css(i.elem, {
-              top: f + "px",
+              top: (f - 30 * (r - 0.5) ) + "px",
               left: d + "px"
           })
       }
