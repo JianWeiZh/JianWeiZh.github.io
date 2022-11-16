@@ -4059,7 +4059,7 @@
             , d = o + n * r / 2 - u + i.opts.offset.x * r
             , f = c + n * r / 2 - p + i.opts.offset.y * r;
           a.css(i.elem, {
-              top: (f - 30 * (r - 0.5) ) + "px",
+              top: (f - i.opts.offset.y * (r - 0.5) ) + "px",
               left: d + "px"
           })
       }

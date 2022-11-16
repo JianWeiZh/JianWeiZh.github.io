@@ -213,14 +213,14 @@ html {
             var scrollFunc = function (e) {
                 e = e || window.event;
             if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
-              if (e.wheelDelta > 0 && scale < 1.29) { //当滑轮向上滚动时
+              if (e.wheelDelta > 0 && scale < 1.3) { //当滑轮向上滚动时
                 scale += 0.01
               }
               if (e.wheelDelta < 0 && scale > 0.5) { //当滑轮向下滚动时
                 scale -= 0.01
               }
             } else if (e.detail) {  //Firefox滑轮事件
-              if (e.detail> 0 && scale < 1.29) { //当滑轮向上滚动时
+              if (e.detail> 0 && scale < 1.3) { //当滑轮向上滚动时
                 scale += 0.01
               }
               if (e.detail< 0 && scale > 0.5) { //当滑轮向下滚动时
