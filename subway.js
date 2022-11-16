@@ -3889,11 +3889,13 @@
   }
   ,
   m.fn.drawSvg = function(t) {
+    var lines = [t.currLines["110100023076"],t.currLines["900000028907"],t.currLines["900000062236"],t.currLines["900000099933"]];
+    t.currLines = lines;
       var e = this
         , n = "normal";
       e.lines.drwSwLines(t.currLines, n),
       e.stations.drwSwStations(t, n),
-      e.text._drwSwStationsName(t, n, 12, 20),
+      e.text._drwSwStationsName(t, n, 12, 20)
       e.text.drwSwLinesName(t, n),
       e.subwayBox.drawBg(t),
       e.drawComplete()
@@ -4333,6 +4335,19 @@
       }
       var u, p, h = t.stations || t.st;
       i.each(h, function(t, e) {
+        if (e.r.indexOf('|') === -1) {
+            if (!['110100023076', '900000028907', '900000062236', '900000099933'].includes(e.r)) return;
+        } else {
+            var arr = e.r.split('|');
+            let hasLine = false;
+            arr.forEach(item => {
+                if (['110100023076', '900000028907', '900000062236', '900000099933'].includes(item)) {
+                    hasLine = true;
+                }
+            })
+            if (!hasLine) return;
+        }
+        // && 
           if (e && "1" == e.su)
               switch (a.theme) {
               case "colorful":
@@ -4411,7 +4426,13 @@
           var o = document.getElementById("g-select");
           o.appendChild(s)
       }
-      for (var c in i)
+      var obj = {};
+      Object.keys(i).forEach(item => {
+        if (['110100023076', '900000028907', '900000062236', '900000099933'].includes(item)) {
+            obj[item] = i[item];
+        }
+      })
+      for (var c in obj)
           if (null != i[c])
               for (var l = 0; l < i[c].length; l++) {
                   var u = a[c] ? a[c] : a
@@ -4453,6 +4474,18 @@
         , s = t.stations || t.st || t
         , o = r.elem.find("#g-station-name-normal");
       i.each(s, function(t, e) {
+        if (e.r.indexOf('|') === -1) {
+            if (!['110100023076', '900000028907', '900000062236', '900000099933'].includes(e.r)) return;
+        } else {
+            var arr = e.r.split('|');
+            let hasLine = false;
+            arr.forEach(item => {
+                if (['110100023076', '900000028907', '900000062236', '900000099933'].includes(item)) {
+                    hasLine = true;
+                }
+            })
+            if (!hasLine) return;
+        }
           if (e && "1" == e.su && "2" != e.t) {
               var r = document.createElement("span");
               i.addClass("g-name"),
@@ -4489,6 +4522,18 @@
           u.appendChild(c)
       }
       i.each(s, function(t, e) {
+            if (e.r.indexOf('|') === -1) {
+                if (!['110100023076', '900000028907', '900000062236', '900000099933'].includes(e.r)) return;
+            } else {
+                var arr = e.r.split('|');
+                let hasLine = false;
+                arr.forEach(item => {
+                    if (['110100023076', '900000028907', '900000062236', '900000099933'].includes(item)) {
+                        hasLine = true;
+                    }
+                })
+                if (!hasLine) return;
+            }
           if (e && "1" == e.su && "2" != e.t) {
               var i = document.createElementNS(r.ns_svg, "text");
               i.setAttribute("id", "name-" + e.si),
@@ -4946,7 +4991,6 @@
       var o = {}
         , c = {};
       i.event.on("station.touch", function(t, e) {
-        console.log('station.touch')
           var n = e.id;
           i.stopAnimation(),
           i.addInfoWindow(n, {});
@@ -4954,7 +4998,6 @@
           s || i.setCenter(a)
       }),
       i.event.on("stationName.touch", function(t, e) {
-        console.log('stationName.touch')
           i.stopAnimation();
           var n = e.id;
           i.addInfoWindow(n, {});
@@ -4962,7 +5005,6 @@
           i.setCenter(a)
       }),
       i.event.on("startStation.touch", function(t, e) {
-        console.log('startStation.touch')
           i.stopAnimation(),
           i.clearInfoWindow(),
           i.setStart(e.id, {}),
@@ -4970,7 +5012,6 @@
           n()
       }),
       i.event.on("endStation.touch", function(t, e) {
-        console.log('endStation.touch')
           i.stopAnimation(),
           i.clearInfoWindow(),
           i.setEnd(e.id, {}),
@@ -4978,7 +5019,6 @@
           n()
       }),
       i.event.on("lineName.touch", function(t, e) {
-        console.log('lineName.touch')
           i.showLine(e.id);
           var n = a("#g-select");
           i.setFitView(n);
@@ -4986,7 +5026,6 @@
           i.setCenter(r)
       }),
       i.event.on("subway.touch", function() {
-            console.log(456)
           i.clearInfoWindow()
       }),
       i.event.on("subway.routeComplete", function(t, e) {})

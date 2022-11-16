@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no"/>
   <title>Document</title>
   <style>
+html {
+  background: url(./big-bg.jpeg) no-repeat left top / cover;
+}
 @keyframes warn {
 	0% {
     transform-origin: center;
@@ -49,15 +52,8 @@
 	animation: warn 3s ease-out;
 	animation-iteration-count: infinite;
 }
-.amap-subway-api #select_bg {
-  fill: #102b6a !important;
-  fill-opacity: 1 !important;
-}
 .marker .img-c {
   display: none;
-}
-.amap-subway-api #subway-svg text {
-  fill: #fff;
 }
 .info {
   display: flex;
@@ -104,6 +100,9 @@
   display: flex;
   width: 100%;
   line-height: 30px;
+}
+.amap-subway-api #subway-svg text {
+  fill: #fff;
 }
 .tableHeader p:first-child, .tableList p:first-child {
   width: 20%;
@@ -152,8 +151,9 @@
         })
       }
       mysubway.event.on('subway.complete', function() {
-        var list = ['110100023076', '900000028907', '900000062236', '900000099933']
-        mysubway.showLine(list);
+        // var list = ['110100023076', '900000028907', '900000062236', '900000099933']
+        // ['110100023076', '900000028907', '900000062236', '900000099933'].includes(t.substr(0, 12))
+        // mysubway.showLine(list);
         mysubway.scale(scale);
         setMarker();
         mysubway.event.on('subway.touch ',function(){	 	
@@ -207,27 +207,32 @@
         })
       })
       var time = new Date().getTime();
+      var timer = null;
       windowAddMouseWheel();
         function windowAddMouseWheel() {
             var scrollFunc = function (e) {
                 e = e || window.event;
             if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
               if (e.wheelDelta > 0 && scale < 1.29) { //当滑轮向上滚动时
-                scale += 0.001
+                scale += 0.01
               }
               if (e.wheelDelta < 0 && scale > 0.33) { //当滑轮向下滚动时
-                scale -= 0.001
+                scale -= 0.01
               }
             } else if (e.detail) {  //Firefox滑轮事件
               if (e.detail> 0 && scale < 1.29) { //当滑轮向上滚动时
-                scale += 0.001
+                scale += 0.01
               }
               if (e.detail< 0 && scale > 0.33) { //当滑轮向下滚动时
-                scale -= 0.001
+                scale -= 0.01
               }
             }
             if (new Date().getTime() - time >= 500) {
               mysubway.scale(scale);
+              // clearTimeout(timer);
+              // timer = setTimeout(() => {
+              //   setMarker()
+              // }, 1000)
             }
         };
                   //给页面绑定滑轮滚动事件
