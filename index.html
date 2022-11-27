@@ -67,7 +67,7 @@ html {
 }
 .subway-tip {
   transform-origin: left top !important;
-  transform: scale(0.5) !important;
+  transform: scale(0.7) !important;
 }
 .info .total {
   line-height: 24px;
@@ -119,10 +119,14 @@ html {
   </style>
   <!-- <script src="https://webapi.amap.com/subway?v=1.0&key=d510afe0d12dbaed585a518e5bebf4b5&callback=cbk"></script> -->
   <script src="./subway.js"></script>
+  <!-- <script src="./jq.min.js"></script> -->
 </head>
 <body>
   <div id="mysubway"></div>
   <script>
+    // $.getJSON('./data.json', function (res) {
+    //   console.log(res);
+    // })
     window.onload = function () {
       var mysubway = subway("mysubway",{
           adcode: "1100"
