@@ -1,10 +1,314 @@
 [
   {
-    "stationName": "新宫",
-    "errorNum": "30"
+    "stationName": "北安河",
+    "errorNum": "6",
+    "deviceList": ["牵引变流器", "广播", "广播", "ATP计算机", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["牵引变流器故障", "广播系统完全故障", "定位丢失", "VOBC宕机", "VOBC宕机"]
+  },
+  {
+    "stationName": "北工大西门",
+    "errorNum": "2",
+    "deviceList": ["人机接口", "客室门机械部件"],
+    "phenomenonList": ["其他", "无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "北京南",
+    "errorNum": "1",
+    "deviceList": ["ATP计算机"],
+    "phenomenonList": ["VOBC宕机"]
+  },
+  {
+    "stationName": "北神树",
+    "errorNum": "6",
+    "deviceList": ["ATO计算机", "ATP计算机", "紧急逃生门", "ATP计算机", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["ATO过标", "定位丢失", "其他", "车地通信中断", "车地通信中断", "VOBC宕机"]
+  },
+  {
+    "stationName": "朝阳公园",
+    "errorNum": "1",
+    "deviceList": ["客室门机械部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "次渠",
+    "errorNum": "6",
+    "deviceList": ["ATP计算机", "ATP计算机", "制动电气控制系统", "辅助逆变器控制", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["轮径校验失败", "VOBC宕机", "紧急制动不能缓解", "辅助变流器故障", "VOBC宕机", "定位丢失"]
+  },
+  {
+    "stationName": "次渠北",
+    "errorNum": "1",
+    "deviceList": ["客室门机械部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "稻香湖路",
+    "errorNum": "3",
+    "deviceList": ["ATP计算机", "ATP计算机", "风缸设备"],
+    "phenomenonList": ["位置无法建立", "VOBC宕机", "总风压力低"]
+  },
+  {
+    "stationName": "东风北桥",
+    "errorNum": "1",
+    "deviceList": ["ATP计算机"],
+    "phenomenonList": ["定位丢失"]
   },
   {
     "stationName": "动物园",
-    "errorNum": "50"
+    "errorNum": "1",
+    "deviceList": ["ATP计算机"],
+    "phenomenonList": ["VOBC宕机"]
+  },
+  {
+    "stationName": "方庄",
+    "errorNum": "1",
+    "deviceList": ["ATO计算机"],
+    "phenomenonList": ["ATO过标"]
+  },
+  {
+    "stationName": "阜通",
+    "errorNum": "3",
+    "deviceList": ["辅助逆变器控制", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["辅助变流器故障", "位置无法建立", "定位丢失"]
+  },
+  {
+    "stationName": "甘家口",
+    "errorNum": "1",
+    "deviceList": ["间隔门"],
+    "phenomenonList": ["其他"]
+  },
+  {
+    "stationName": "公益西桥",
+    "errorNum": "1",
+    "deviceList": ["速度传感器"],
+    "phenomenonList": ["定位丢失"]
+  },
+  {
+    "stationName": "黄村西大街",
+    "errorNum": "2",
+    "deviceList": ["辅助逆变器控制", "速度传感器"],
+    "phenomenonList": ["辅助变流器故障", "定位丢失"]
+  },
+  {
+    "stationName": "嘉会湖",
+    "errorNum": "3",
+    "deviceList": ["ATP计算机", "牵引变流器", "交换机"],
+    "phenomenonList": ["定位丢失", "牵引变流器故障", "交换机失效"]
+  },
+  {
+    "stationName": "将台",
+    "errorNum": "2",
+    "deviceList": ["车门电气部件", "牵引变流器"],
+    "phenomenonList": ["无法建立门全关闭环路", "列车全列无牵引"]
+  },
+  {
+    "stationName": "角门西",
+    "errorNum": "3",
+    "deviceList": ["多普勒雷达", "ATP计算机", "速度传感器"],
+    "phenomenonList": ["位置无法建立", "VOBC宕机", "定位丢失"]
+  },
+  {
+    "stationName": "金台路",
+    "errorNum": "1",
+    "deviceList": ["辅助逆变器控制"],
+    "phenomenonList": ["辅助变流器故障"]
+  },
+  {
+    "stationName": "景泰",
+    "errorNum": "2",
+    "deviceList": ["ATP计算机", "输入电路"],
+    "phenomenonList": ["定位丢失", "列车全列无牵引"]
+  },
+  {
+    "stationName": "九龙山",
+    "errorNum": "2",
+    "deviceList": ["牵引控制单元", "ATP计算机"],
+    "phenomenonList": ["列车全列无牵引", "位置无法建立"]
+  },
+  {
+    "stationName": "来广营",
+    "errorNum": "3",
+    "deviceList": ["主处理模块", "客室门机械部件", "制动电气控制系统"],
+    "phenomenonList": ["列车无法激活", "无法建立门全关闭环路", "紧急制动不能缓解"]
+  },
+  {
+    "stationName": "马家堡",
+    "errorNum": "2",
+    "deviceList": ["ATP计算机", "ATP计算机"],
+    "phenomenonList": ["VOBC宕机", "VOBC宕机"]
+  },
+  {
+    "stationName": "农大南路",
+    "errorNum": "7",
+    "deviceList": ["ATP计算机", "ATP计算机", "车内设备", "牵引变流器", "广播", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["定位丢失", "VOBC宕机", "其他", "牵引变流器故障", "广播系统完全故障", "车地通信中断", "位置无法建立"]
+  },
+  {
+    "stationName": "平安里",
+    "errorNum": "1",
+    "deviceList": ["客室门机械部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "平乐园",
+    "errorNum": "1",
+    "deviceList": ["车门电气部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "清源路",
+    "errorNum": "2",
+    "deviceList": ["管路元件", "牵引变流器"],
+    "phenomenonList": ["紧急制动不能缓解", "牵引变流器故障"]
+  },
+  {
+    "stationName": "人民大学",
+    "errorNum": "1",
+    "deviceList": ["紧急逃生门"],
+    "phenomenonList": ["其他"]
+  },
+  {
+    "stationName": "善各庄",
+    "errorNum": "3",
+    "deviceList": ["广播", "供风系统", "车门电气部件"],
+    "phenomenonList": ["广播系统完全故障", "紧急制动不能缓解", "无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "十八里店",
+    "errorNum": "2",
+    "deviceList": ["辅助逆变器控制", "广播"],
+    "phenomenonList": ["辅助变流器故障", "广播系统完全故障"]
+  },
+  {
+    "stationName": "十里河",
+    "errorNum": "6",
+    "deviceList": ["ATP计算机", "ATO计算机", "ATO计算机", "ATP计算机", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["VOBC宕机", "对标无法开门", "对标无法开门", "定位丢失", "VOBC宕机", "VOBC宕机"]
+  },
+  {
+    "stationName": "苏州桥",
+    "errorNum": "1",
+    "deviceList": ["其他"],
+    "phenomenonList": ["其他"]
+  },
+  {
+    "stationName": "陶然亭",
+    "errorNum": "2",
+    "deviceList": ["ATP计算机", "ATP计算机"],
+    "phenomenonList": ["VOBC宕机", "VOBC宕机"]
+  },
+  {
+    "stationName": "天宫院",
+    "errorNum": "2",
+    "deviceList": ["ATP计算机", "广播"],
+    "phenomenonList": ["定位丢失", "广播系统完全故障"]
+  },
+  {
+    "stationName": "屯佃",
+    "errorNum": "5",
+    "deviceList": ["ATP计算机", "ATO计算机", "广播", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["CM不可用", "车地通信中断", "广播系统完全故障", "CM不可用", "位置无法建立"]
+  },
+  {
+    "stationName": "万泉河",
+    "errorNum": "1",
+    "deviceList": ["客室门机械部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "万寿寺",
+    "errorNum": "1",
+    "deviceList": ["间隔门"],
+    "phenomenonList": ["其他"]
+  },
+  {
+    "stationName": "望京",
+    "errorNum": "6",
+    "deviceList": ["ATP计算机", "客室门机械部件", "广播", "ATP计算机", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["车载屏显示异常", "客室门无法集控开关", "广播系统完全故障", "车地通信中断", "其他", "定位丢失"]
+  },
+  {
+    "stationName": "西北旺",
+    "errorNum": "4",
+    "deviceList": ["牵引变流器", "车门电气部件", "ATP计算机", "ATP计算机"],
+    "phenomenonList": ["牵引变流器故障", "无法建立门全关闭环路", "位置无法建立", "定位丢失"]
+  },
+  {
+    "stationName": "西单",
+    "errorNum": "2",
+    "deviceList": ["广播", "防滑系统"],
+    "phenomenonList": ["广播系统完全故障", "紧急制动不能缓解"]
+  },
+  {
+    "stationName": "西红门",
+    "errorNum": "4",
+    "deviceList": ["ATP计算机", "制动控制装置", "间隔门", "ATP计算机"],
+    "phenomenonList": ["VOBC宕机", "紧急制动不能缓解", "其他", "VOBC宕机"]
+  },
+  {
+    "stationName": "西四",
+    "errorNum": "1",
+    "deviceList": ["客室门机械部件"],
+    "phenomenonList": ["无法建立门全关闭环路"]
+  },
+  {
+    "stationName": "西苑",
+    "errorNum": "4",
+    "deviceList": ["牵引变流器", "辅助逆变器控制", "ATP计算机", "司机显示台"],
+    "phenomenonList": ["牵引变流器故障", "辅助变流器故障", "车载屏显示异常", "车载屏显示异常"]
+  },
+  {
+    "stationName": "西苑",
+    "errorNum": "4",
+    "deviceList": ["牵引变流器", "辅助逆变器控制", "ATP计算机", "司机显示台"],
+    "phenomenonList": ["牵引变流器故障", "辅助变流器故障", "车载屏显示异常", "车载屏显示异常"]
+  },
+  {
+    "stationName": "新宫",
+    "errorNum": "2",
+    "deviceList": ["客室门机械部件", "广播"],
+    "phenomenonList": ["无法建立门全关闭环路", "广播系统完全故障"]
+  },
+  {
+    "stationName": "新街口",
+    "errorNum": "1",
+    "deviceList": ["广播"],
+    "phenomenonList": ["广播系统完全故障"]
+  },
+  {
+    "stationName": "宣武门",
+    "errorNum": "2",
+    "deviceList": ["司机室门", "司机室门"],
+    "phenomenonList": ["其他", "其他"]
+  },
+  {
+    "stationName": "义和庄",
+    "errorNum": "3",
+    "deviceList": ["牵引变流器", "辅助逆变器控制", "速度传感器"],
+    "phenomenonList": ["牵引变流器故障", "辅助变流器故障", "定位丢失"]
+  },
+  {
+    "stationName": "永丰南",
+    "errorNum": "3",
+    "deviceList": ["ATO计算机", "广播", "ATP计算机"],
+    "phenomenonList": ["ATO过标", "广播系统完全故障", "定位丢失"]
+  },
+  {
+    "stationName": "圆明园",
+    "errorNum": "2",
+    "deviceList": ["车门电气部件", "多普勒雷达"],
+    "phenomenonList": ["无法建立门全关闭环路", "定位丢失"]
+  },
+  {
+    "stationName": "枣园",
+    "errorNum": "1",
+    "deviceList": ["牵引变流器"],
+    "phenomenonList": ["牵引变流器故障"]
+  },
+  {
+    "stationName": "中关村",
+    "errorNum": "3",
+    "deviceList": ["辅助逆变器控制", "司机显示台", "ATP计算机"],
+    "phenomenonList": ["辅助变流器故障", "车载屏显示异常", "VOBC宕机"]
   }
 ]

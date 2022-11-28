@@ -67,9 +67,10 @@ html {
 }
 .subway-tip {
   transform-origin: left top !important;
-  transform: scale(0.82) !important;
+  /* transform: scale(0.9) !important; */
 }
 .info .total {
+  width: 90px;
   line-height: 24px;
   background: url('./number-bg.png') no-repeat 0 130px / 100% 30px;
   margin-right: 10px;
@@ -84,8 +85,8 @@ html {
 }
 .info .table {
   width: 370px;
-  height: 202px;
-  margin: 20px 20px 40px 0;
+  height: 232px;
+  margin: 20px 20px 20px 0;
   padding: 4px 4px 4px 0;
   font-size: 12px;
   background: url('./small-bg.png') no-repeat left top / 100% 100%;
@@ -99,7 +100,7 @@ html {
 .table .tableList {
   display: flex;
   width: 100%;
-  line-height: 30px;
+  line-height: 26px;
 }
 .amap-subway-api #subway-svg text {
   fill: #fff;
@@ -119,39 +120,65 @@ html {
   </style>
   <!-- <script src="https://webapi.amap.com/subway?v=1.0&key=d510afe0d12dbaed585a518e5bebf4b5&callback=cbk"></script> -->
   <script src="./subway.js"></script>
-  <!-- <script src="./jq.min.js"></script> -->
+  <script src="./jq.min.js"></script>
 </head>
 <body>
   <div id="mysubway"></div>
   <script>
-    // $.getJSON('./data.json', function (res) {
-    //   console.log(res);
-    // })
     window.onload = function () {
       var mysubway = subway("mysubway",{
           adcode: "1100"
       });
       var scale = 0.5;
+      var errorList = [];
       function setMarker () {
-        mysubway.clearMarker('动物园');
-        mysubway.clearMarker('新宫');
-        mysubway.addMarker('动物园', {
-          customClass: 'marker marker-动物园',
-          width: '30px',
-          height: '30px',
-          offset: {
-            x: 0,
-            y: 30,
-          },
-        })
-        mysubway.addMarker('新宫', {
-          customClass: 'marker marker-新宫',
-          width: '50px',
-          height: '50px',
-          offset: {
-            x: 0,
-            y: 50,
-          },
+        $.getJSON('./data.json', function (res) {
+          errorList = res;
+          res.forEach(function (item) {
+            var name = item.stationName;
+            var num = item.errorNum * 10;
+            mysubway.addMarker(name, {
+              customClass: `marker marker-${name}`,
+              width: `${num}px`,
+              height: `${num}px`,
+              offset: {
+                x: 0,
+                y: num,
+              },
+            })
+          })
+          Array.from(document.querySelectorAll('.marker')).map(item => {
+            item.addEventListener('click', (e) => {
+              const name = e.target.className.split(' ')[3].split('-')[1];
+              const errObj = errorList.find(item => item.stationName === name);
+              if (errObj) {
+                mysubway.clearInfoWindow();
+                let headerStr = `<div class="info">
+                              <div class="total">
+                                <p>本站故障数:</p>
+                                <p class="totalNum">${errObj.errorNum}</p>
+                              </div>
+                              <div class="table">
+                                <div class="tableHeader">
+                                  <p>序号</p>
+                                  <p>现象分类</p>
+                                  <p>设备</p>
+                                </div>`;
+                let footerStr =  `</div></div>`;
+                let contentStr = '';
+                errObj.phenomenonList.forEach((item, i) => {
+                  contentStr += `<div class="tableList">
+                                  <p>${i + 1}</p>
+                                  <p>${item}</p>
+                                  <p>${errObj.deviceList[i]}</p>
+                                </div>`
+                })
+                mysubway.addInfoWindow(name, {
+                  content: headerStr + contentStr + footerStr
+                });
+              }
+            })
+          })
         })
       }
       mysubway.event.on('subway.complete', function() {
@@ -162,52 +189,6 @@ html {
         setMarker();
         mysubway.event.on('subway.touch ',function(){	 	
           mysubway.clearInfoWindow();
-        })
-        Array.from(document.querySelectorAll('.marker')).map(item => {
-          item.addEventListener('click', (e) => {
-            const name = e.target.className.split(' ')[3].split('-')[1];
-            mysubway.clearInfoWindow();
-            mysubway.addInfoWindow(name, {
-              content: `<div class="info">
-                          <div class="total">
-                            <p>本站故障数:</p>
-                            <p class="totalNum">1,000</p>
-                          </div>
-                          <div class="table">
-                            <div class="tableHeader">
-                              <p>序号</p>
-                              <p>现象分类</p>
-                              <p>设备</p>
-                            </div>
-                            <div class="tableList">
-                              <p>1</p>
-                              <p>ATO过标</p>
-                              <p>列车自动运行设备</p>
-                            </div>
-                            <div class="tableList">
-                              <p>2</p>
-                              <p>CM不可用</p>
-                              <p>列车自动运行设备</p>
-                            </div>
-                            <div class="tableList">
-                              <p>3</p>
-                              <p>VOBC宕机</p>
-                              <p>列车自动运行设备</p>
-                            </div>
-                            <div class="tableList">
-                              <p>4</p>
-                              <p>车地通信中断</p>
-                              <p>列车自动运行设备</p>
-                            </div>
-                            <div class="tableList">
-                              <p>5</p>
-                              <p>车载屏显示异常</p>
-                              <p>列车自动运行设备</p>
-                            </div>
-                          </div>
-                        </div>`
-            });
-          })
         })
       })
       var time = new Date().getTime();
